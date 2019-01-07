@@ -1,27 +1,26 @@
-const express=require('express');
-const router=express.Router();
+const express = require('express');
+const router = express.Router();
 
-//register
+//Register
 router.get('/register',(req,res,next)=>{
-
-    res.send('REGISTER');
+res.send('REGISTER');
 });
 
-//autenticate
+
+//Authenticate
 router.get('/authenticate',(req,res,next)=>{
-
     res.send('AUTHENTICATE');
-});
+    });
 
-//profile
+
+//Profile
 router.get('/profile',(req,res,next)=>{
-
     res.send('PROFILE');
-});
+    });
 
-//validate
+//Validate
 router.get('/validate',(req,res,next)=>{
-
     res.send('VALIDATE');
-});
-module.exports=router;
+    });
+
+module.exports = router;

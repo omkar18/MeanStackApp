@@ -23,10 +23,10 @@ password:{
 
 const User=module.exports=mongoose.model('User',UserSchema);
 
-module.exports.getUserById=function(id,callback)
-{
+module.exports.getUserById=function(id,callback){
     User.findById(id,callback);
 }
+
 module.exports.addUser=function(newUser,callback){
     bcrypt.genSalt(10,(err,salt)=>{
         bcrypt.hash(newUser.password,salt,(err,hash)=>{
@@ -37,14 +37,12 @@ module.exports.addUser=function(newUser,callback){
     });
 }
 
-module.exports.getUserByUsername=function(username,callback)
-{
+module.exports.getUserByUsername=function(username,callback){
     const query={username:username}
-    User.findById(query,callback);
+    User.findOne(query,callback);
 }
 
-module.exports.comparePassword=function(candidatePassword,hash,callback)
-{
+module.exports.comparePassword=function(candidatePassword,hash,callback){
     bcrypt.compare(candidatePassword,hash,(err,isMatch)=>{
         if(err) throw err;
         callback(null,isMatch);

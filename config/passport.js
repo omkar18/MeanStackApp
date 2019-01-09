@@ -3,6 +3,8 @@ const ExtractJwt=require('passport-jwt').ExtractJwt;
 const User=require('../models/user');
 const config=require('../config/database');
 
+// this file is for generating token for authenticated users
+
 module.exports=function(passport){
     let opts={};
     opts.jwtFromRequest=ExtractJwt.fromAuthHeaderAsBearerToken();

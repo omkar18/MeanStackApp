@@ -54,6 +54,7 @@ router.post('/authenticate', (req, res, next) => {
             if (isMatch) {
                 const token = jwt.sign({ data: user }, config.secret, {
                     expiresIn: 604800 //1 week
+                    
                 });
                 //if user and password matches they will show users name,username,email
                 res.json({

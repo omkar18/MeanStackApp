@@ -9,14 +9,21 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import { registerComponent, RegisterComponent } from './components/register/register.component';
+import { RegisterComponent } from './components/register/register.component';
+import {FormsModule} from '@angular/forms';
+
+import {ValidateService} from './services/validate.service';
+import {AuthService} from './services/auth.service';
+import {FlashMessagesModule} from 'angular2-flash-messages';
 
 const appRoutes:Routes=[
   {path:'',component:HomeComponent},
+
   {path:'register',component:RegisterComponent},
   {path:'login',component:LoginComponent},
   {path:'dashboard',component:DashboardComponent},
-  {path:'profile',component:ProfileComponent},
+  {path:'profile',component:ProfileComponent}
+ 
 ]
 
 @NgModule({
@@ -31,10 +38,12 @@ const appRoutes:Routes=[
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
+    FlashMessagesModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [ValidateService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
